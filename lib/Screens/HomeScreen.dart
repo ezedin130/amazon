@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:amazon/Services/Networking.dart';
 import 'package:amazon/Services/ContainerBox.dart';
+import 'package:amazon/Services/Images.dart';
 
 class HomeScreen extends StatefulWidget {
   static final id = 'home';
@@ -121,15 +122,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ContainerBox(
               headertext: 'Score the top PCs & Accessories',
               btntxt: 'see more',
+              imagepath1: images.images1.path,
+              imagepath2: images.images2.path,
+              imagepath3: images.images3.path,
+              imagepath4:  images.images4.path,
+              name1: images.images1.name,
+              name2: images.images2.name,
+              name3: images.images3.name,
+              name4: images.images4.name,
             ),
-            ContainerBox(
-              headertext: 'Fantastic Finds for Home',
-              btntxt: 'see more',
-            ),
-             ContainerBox(
-              headertext: 'Shoes under \$60',
-              btntxt: 'shop all',
-            ),
+            // ContainerBox(
+            //   headertext: 'Fantastic Finds for Home',
+            //   btntxt: 'see more',
+            // ),
+            //  ContainerBox(
+            //   headertext: 'Shoes under \$60',
+            //   btntxt: 'shop all',
+            // ),
           ],
         ),
       ),
