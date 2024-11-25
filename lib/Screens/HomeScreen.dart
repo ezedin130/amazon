@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:amazon/Services/Networking.dart';
 import 'package:amazon/Services/ContainerBox.dart';
 import 'package:amazon/Services/Images.dart';
+import 'AccountScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   static final id = 'home';
@@ -165,11 +166,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   IconBtn(
                     icon: Icons.home,
-                    onp: () {},
+                    onp: () {
+                      Navigator.pushNamed(context, HomeScreen.id);
+                    },
                   ),
                   IconBtn(
                     icon: Icons.person,
-                    onp: () {},
+                    onp: () {
+                      Navigator.pushNamed(context, AccountScreen.id);
+                    },
                   ),
                   IconBtn(
                     icon: Icons.shopping_cart,

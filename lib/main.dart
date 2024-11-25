@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'Screens/HomeScreen.dart';
 import 'package:device_preview/device_preview.dart';
+import 'Screens/AccountScreen.dart';
 
 void main() {
   runApp(DevicePreview(
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: HomeScreen.id,
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
+        AccountScreen.id: (context) => const AccountScreen()
       },
     );
   }
