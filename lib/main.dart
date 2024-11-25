@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'Screens/HomeScreen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'Screens/AccountScreen.dart';
+import 'Screens/CategorieScreen.dart';
+import 'Screens/ListScreen.dart';
 
 void main() {
-  runApp(DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => const MyApp(),
-  ));
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +26,9 @@ class MyApp extends StatelessWidget {
       initialRoute: HomeScreen.id,
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
-        AccountScreen.id: (context) => const AccountScreen()
+        AccountScreen.id: (context) => const AccountScreen(),
+        CategorieScreen.id: (context) => const CategorieScreen(),
+        ListScreen.id: (context) => const ListScreen(),
       },
     );
   }

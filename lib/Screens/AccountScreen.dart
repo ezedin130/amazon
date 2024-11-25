@@ -1,5 +1,8 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:amazon/Screens/CategorieScreen.dart';
+import 'package:amazon/Screens/HomeScreen.dart';
+import 'package:amazon/Screens/ListScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:amazon/Services/Greetings.dart';
@@ -34,8 +37,8 @@ class _AccountScreenState extends State<AccountScreen>
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   final greeting = Greetings();
@@ -79,6 +82,8 @@ class _AccountScreenState extends State<AccountScreen>
       body: Container(
         color: Colors.white,
         child: Column(
+          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
               height: 50.0,
@@ -91,28 +96,78 @@ class _AccountScreenState extends State<AccountScreen>
                 ),
               ),
             ),
+            SizedBox(height: 15.0),
             Center(
               child: Text(
                 'SIGN IN FOR THE BEST\n experience',
                 style: TextStyle(color: Colors.black, fontSize: 25.0),
               ),
             ),
-            Material(
-              elevation: 5.0,
-              borderRadius: BorderRadius.circular(15.0),
-              child: MaterialButton(
-                onPressed: () {},
-                child: Text('Sign in'),
+            SizedBox(height: 15.0),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              //child:
+              //decoration:
+              //BoxDecoration(borderRadius: BorderRadius.circular(120.0)),
+              child: Material(
+                elevation: 5.0,
+                // borderRadius: BorderRadius.circular(15.0),
+                child: MaterialButton(
+                  onPressed: () {},
+                  child: Text('Sign in'),
+                ),
               ),
             ),
-            Material(
-              elevation: 5.0,
-              borderRadius: BorderRadius.circular(15.0),
-              child: MaterialButton(
-                onPressed: () {},
-                child: Text('Create Account'),
+            SizedBox(height: 15.0),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Material(
+                elevation: 5.0,
+                //borderRadius: BorderRadius.circular(15.0),
+                child: MaterialButton(
+                  onPressed: () {},
+                  child: Text('Create Account'),
+                ),
               ),
             ),
+            Spacer(),
+            Container(
+              margin: EdgeInsets.only(bottom: 5.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black),
+              ),
+              child: Row(
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconBtn(
+                    icon: Icons.home,
+                    onp: () {
+                      Navigator.pushNamed(context, HomeScreen.id);
+                    },
+                  ),
+                  IconBtn(
+                    icon: Icons.person,
+                    onp: () {
+                      Navigator.pushNamed(context, AccountScreen.id);
+                    },
+                  ),
+                  IconBtn(
+                    icon: Icons.shopping_cart,
+                    onp: () {
+                      Navigator.pushNamed(context, CategorieScreen.id);
+                    },
+                  ),
+                  IconBtn(
+                    icon: Icons.list,
+                    onp: () {
+                      Navigator.pushNamed(context, ListScreen.id);
+                    },
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
