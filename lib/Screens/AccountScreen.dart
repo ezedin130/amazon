@@ -3,6 +3,8 @@
 import 'package:amazon/Screens/CategorieScreen.dart';
 import 'package:amazon/Screens/HomeScreen.dart';
 import 'package:amazon/Screens/ListScreen.dart';
+import 'package:amazon/Screens/LoginScreen.dart';
+import 'package:amazon/Screens/RegisterScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:amazon/Services/Greetings.dart';
@@ -113,7 +115,9 @@ class _AccountScreenState extends State<AccountScreen>
                 elevation: 5.0,
                 // borderRadius: BorderRadius.circular(15.0),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, LoginScreen.id);
+                  },
                   child: Text('Sign in'),
                 ),
               ),
@@ -125,7 +129,9 @@ class _AccountScreenState extends State<AccountScreen>
                 elevation: 5.0,
                 //borderRadius: BorderRadius.circular(15.0),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, RegisterScreen.id);
+                  },
                   child: Text('Create Account'),
                 ),
               ),
