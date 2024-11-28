@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
                     prefixIconColor: Colors.black,
-                    suffixIcon: Icon(Icons.camera_alt),
+                    suffixIcon: Icon(Icons.cancel),
                     suffixIconColor: Colors.grey,
                     hintText: 'Search Amazon',
                     hintStyle: TextStyle(color: Colors.black54)),

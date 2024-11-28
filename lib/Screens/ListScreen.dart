@@ -2,6 +2,7 @@
 
 import 'package:amazon/Screens/AccountScreen.dart';
 import 'package:amazon/Screens/HomeScreen.dart';
+import 'package:amazon/Screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
 
 class ListScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _ListScreenState extends State<ListScreen> {
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
                     prefixIconColor: Colors.black,
-                    suffixIcon: Icon(Icons.camera_alt),
+                    suffixIcon: Icon(Icons.cancel),
                     suffixIconColor: Colors.grey,
                     hintText: 'Search Amazon',
                     hintStyle: TextStyle(color: Colors.black54)),
@@ -118,9 +119,7 @@ class _ListScreenState extends State<ListScreen> {
                   borderRadius: BorderRadius.circular(12.0),
                   child: MaterialButton(
                     onPressed: () {
-                      //this should have list of all the categories when it is touched it should change the icon to keyboard_arrow_up
-                      //drop down button type shit
-                      setState(() {});
+                      Navigator.pushNamed(context, LoginScreen.id);
                     },
                     child: ListTile(
                       leading: Text(

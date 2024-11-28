@@ -5,6 +5,8 @@
 import 'package:amazon/Screens/AccountScreen.dart';
 import 'package:amazon/Screens/HomeScreen.dart';
 import 'package:amazon/Screens/ListScreen.dart';
+import 'package:amazon/Screens/LoginScreen.dart';
+import 'package:amazon/Screens/RegisterScreen.dart';
 import 'package:flutter/material.dart';
 
 class CategorieScreen extends StatelessWidget {
@@ -40,7 +42,7 @@ class WithoutUser extends StatelessWidget {
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search),
                   prefixIconColor: Colors.black,
-                  suffixIcon: Icon(Icons.camera_alt),
+                  suffixIcon: Icon(Icons.cancel),
                   suffixIconColor: Colors.grey,
                   hintText: 'Search Amazon',
                   hintStyle: TextStyle(color: Colors.black54)),
@@ -79,7 +81,9 @@ class WithoutUser extends StatelessWidget {
             elevation: 5.0,
             borderRadius: BorderRadius.circular(32.0),
             child: MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, LoginScreen.id);
+              },
               child: Text('Sign in to your account'),
             ),
           ),
@@ -90,7 +94,9 @@ class WithoutUser extends StatelessWidget {
             elevation: 5.0,
             borderRadius: BorderRadius.circular(32.0),
             child: MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RegisterScreen.id);
+              },
               child: Text('Sign up now'),
             ),
           ),
