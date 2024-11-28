@@ -1,12 +1,22 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously, avoid_print
 
 import 'package:amazon/Constants.dart';
+import 'package:amazon/Screens/HomeScreen.dart';
+import 'package:amazon/Services/Auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   static const id = 'login';
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _auth = Authentication();
+  late String email;
+  late String password;
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
@@ -31,6 +41,9 @@ class LoginScreen extends StatelessWidget {
             ),
             TextField(
               //check if the password match in the firebase
+              onChanged: (value) {
+                email = value;
+              },
               decoration:
                   ktextFieldDecoration.copyWith(hintText: 'Enter Your Email'),
             ),
@@ -39,13 +52,17 @@ class LoginScreen extends StatelessWidget {
             ),
             TextField(
               //check if the password match in the firebase for the particular email
-              decoration:
-                  ktextFieldDecoration.copyWith(hintText: 'Enter Your Password'),
+              onChanged: (value) {
+                password = value;
+              },
+              decoration: ktextFieldDecoration.copyWith(
+                  hintText: 'Enter Your Password'),
             ),
             MaterialButton(
               color: Colors.lightBlueAccent,
               onPressed: () {
-                 //onpressed it should go to homescreen but only after checking requirements of the text field
+                //onpressed it should go to homescreen but only after checking requirements of the text field
+                signin();
               },
               child: Text(
                 'Continue',
@@ -57,5 +74,13 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void signin() async {
+    final user = await _auth.SigninUser(email: email, password: password);
+    if (user != null) {
+      print('User Created Successfully with ID: ${user.uid}');
+      Navigator.pushNamed(context, HomeScreen.id);
+    }
   }
 }
