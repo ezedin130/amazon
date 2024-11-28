@@ -2,6 +2,7 @@
 
 import 'package:amazon/Screens/CategorieScreen.dart';
 import 'package:amazon/Screens/ListScreen.dart';
+import 'package:amazon/Services/Location.dart';
 import 'package:flutter/material.dart';
 import 'package:amazon/Services/Networking.dart';
 import 'package:amazon/Services/ContainerBox.dart';
@@ -16,29 +17,33 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // String? country;
-  // String? city;
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   getPlace();
-  // }
+  String? country;
+  String? city;
+  @override
+  void initState() {
+    super.initState();
+    getPlace();
+  }
 
-  // void getPlace() async {
-  //   final net = Networking('c51a239b-eb31-483b-9a17-c9f52fd8e81c');
-  //   final response = await net.fetchData();
+  void getPlace() async {
+    final loc = Location();
+    await loc.getLocation();
+    double? latitude = loc.latitude;
+    double? longitude = loc.longitude;
+    final net =
+        Networking('62f085e8b35ee648c8570ddb8386b9a3', latitude, longitude);
+    final response = await net.fetchData();
 
-  //   setState(() {
-  //     if (response != null) {
-  //       country = response.country;
-  //       city = response.city;
-  //     } else {
-  //       country = 'Unknown Country';
-  //       city = 'Unknown City';
-  //     }
-  //   });
-  // }
+    if (response != null) {
+      setState(() {
+        country = response['sys']['country'];
+        city = response['name'];
+      });
+    } else {
+      country = 'Unknown Country';
+      city = 'Unknown City';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  'Deliver to CountryName , CityName',
+                  'Deliver to $country , $city',
                   style: TextStyle(
                     color: Colors.white,
                   ),

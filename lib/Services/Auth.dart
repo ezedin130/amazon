@@ -20,7 +20,7 @@ class Authentication {
         toast.showToast(msg: 'Account already exists');
       }
     } catch (e) {
-      toast.showToast(msg: 'the error was : $e');
+      print('the error was : $e');
     }
     return null;
   }
@@ -32,13 +32,13 @@ class Authentication {
           .signInWithEmailAndPassword(email: email, password: password);
       return credentials.user;
     } on FirebaseException catch (e) {
-      if (e.code == 'ERROR_USER_NOT_FOUND') {
-        toast.showToast(msg: 'User not found');
-      } else if (e.code == 'ERROR_WRONG_PASSWORD') {
-        toast.showToast(msg: 'Wrong password , try again');
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+        toast.showToast(msg: 'Invalid email or password.');
+      } else {
+        toast.showToast(msg: 'An error occurred: ${e.code}');
       }
     } catch (e) {
-      toast.showToast(msg: 'the error was : $e');
+      print('the error was : $e');
     }
     return null;
   }
@@ -47,7 +47,7 @@ class Authentication {
     try {
       await _firebaseauth.signOut();
     } catch (e) {
-      toast.showToast(msg: 'the error was : $e');
+      print('the error was : $e');
     }
   }
 }

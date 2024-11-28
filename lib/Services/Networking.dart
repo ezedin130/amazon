@@ -1,34 +1,28 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Networking {
   final String apiKey;
+  double? latitude;
+  double? longitude;
 
-  Networking(this.apiKey);
+  Networking(this.apiKey, this.latitude, this.longitude);
 
-  Future<Location?> fetchData() async {
+  Future<dynamic> fetchData() async {
     final url =
-        'https://apiip.net/api/check?ip=67.250.186.196&accessKey=$apiKey';
+        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey';
 
     try {
       final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        return Location(
-          country: data['countryName'],
-          city: data['cityName'],
-        );
+        return data;
       }
     } catch (e) {
       print('Error fetching location: $e');
     }
     return null; // Return null if fetching fails
   }
-}
-
-class Location {
-  final String? country;
-  final String? city;
-
-  Location({this.country, this.city});
 }
