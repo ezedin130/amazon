@@ -3,6 +3,7 @@
 import 'package:amazon/Screens/CategorieScreen.dart';
 import 'package:amazon/Screens/ListScreen.dart';
 import 'package:amazon/Services/Location.dart';
+import 'package:amazon/Services/Navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:amazon/Services/Networking.dart';
 import 'package:amazon/Services/ContainerBox.dart';
@@ -17,6 +18,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int myIndex = 0;
+
   String? country;
   String? city;
   @override
@@ -49,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff085749),
+      bottomNavigationBar: AppBottomNavigationBar(currentIndex: 0),
       body: Column(
         children: [
           Padding(
@@ -160,43 +164,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }),
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: 5.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.black),
-            ),
-            child: Row(
-              //crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconBtn(
-                  icon: Icons.home,
-                  onp: () {
-                    Navigator.pushNamed(context, HomeScreen.id);
-                  },
-                ),
-                IconBtn(
-                  icon: Icons.person,
-                  onp: () {
-                    Navigator.pushNamed(context, AccountScreen.id);
-                  },
-                ),
-                IconBtn(
-                  icon: Icons.shopping_cart,
-                  onp: () {
-                    Navigator.pushNamed(context, CategorieScreen.id);
-                  },
-                ),
-                IconBtn(
-                  icon: Icons.list,
-                  onp: () {
-                    Navigator.pushNamed(context, ListScreen.id);
-                  },
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );

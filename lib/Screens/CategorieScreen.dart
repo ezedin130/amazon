@@ -7,6 +7,7 @@ import 'package:amazon/Screens/HomeScreen.dart';
 import 'package:amazon/Screens/ListScreen.dart';
 import 'package:amazon/Screens/LoginScreen.dart';
 import 'package:amazon/Screens/RegisterScreen.dart';
+import 'package:amazon/Services/Navigator.dart';
 import 'package:flutter/material.dart';
 
 class CategorieScreen extends StatelessWidget {
@@ -17,6 +18,7 @@ class CategorieScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff085749),
+      bottomNavigationBar: AppBottomNavigationBar(currentIndex: 2),
       body: WithoutUser(),
     );
   }
@@ -101,42 +103,6 @@ class WithoutUser extends StatelessWidget {
             ),
           ),
         ),
-        Spacer(),
-        Container(
-          margin: EdgeInsets.only(bottom: 5.0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.black),
-          ),
-          child: Row(
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconBtn(
-                icon: Icons.home,
-                onp: () {
-                  Navigator.pushNamed(context, HomeScreen.id);
-                },
-              ),
-              IconBtn(
-                icon: Icons.person,
-                onp: () {
-                  Navigator.pushNamed(context, AccountScreen.id);
-                },
-              ),
-              IconBtn(
-                icon: Icons.shopping_cart,
-                onp: () {},
-              ),
-              IconBtn(
-                icon: Icons.list,
-                onp: () {
-                  Navigator.pushNamed(context, ListScreen.id);
-                },
-              ),
-            ],
-          ),
-        )
       ],
     );
   }

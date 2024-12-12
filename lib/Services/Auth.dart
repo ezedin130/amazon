@@ -50,4 +50,5 @@ class Authentication {
       print('the error was : $e');
     }
   }
+  //function that returns true if user is logged in and returns false otherwise
 }
